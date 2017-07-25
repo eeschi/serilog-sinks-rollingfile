@@ -18,7 +18,7 @@ using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting;
 using Serilog.Formatting.Display;
-using Serilog.Sinks.RollingFile;
+using Serilog.Sinks.RollingFileWithPath;
 
 namespace Serilog
 {
@@ -55,7 +55,7 @@ namespace Serilog
         /// is false.</param>
         /// <returns>Configuration object allowing method chaining.</returns>
         /// <remarks>The file will be written using the UTF-8 character set.</remarks>
-        public static LoggerConfiguration RollingFile(
+        public static LoggerConfiguration RollingFileWithPath(
             this LoggerSinkConfiguration sinkConfiguration,
             string pathFormat,
             LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum,
@@ -67,7 +67,7 @@ namespace Serilog
             bool buffered = false)
         {
             var formatter = new MessageTemplateTextFormatter(outputTemplate, formatProvider);
-            return RollingFile(sinkConfiguration, formatter, pathFormat, restrictedToMinimumLevel, fileSizeLimitBytes,
+            return RollingFileWithPath(sinkConfiguration, formatter, pathFormat, restrictedToMinimumLevel, fileSizeLimitBytes,
                 retainedFileCountLimit, levelSwitch, buffered);
         }
 
@@ -94,7 +94,7 @@ namespace Serilog
         /// is false.</param>
         /// <returns>Configuration object allowing method chaining.</returns>
         /// <remarks>The file will be written using the UTF-8 character set.</remarks>
-        public static LoggerConfiguration RollingFile(
+        public static LoggerConfiguration RollingFileWithPath(
             this LoggerSinkConfiguration sinkConfiguration,
             ITextFormatter formatter,
             string pathFormat,

@@ -14,8 +14,7 @@
  
 using System;
 
-namespace Serilog.Sinks.RollingFile
-{
+namespace Serilog.Sinks.RollingFileWithPath {
     class RollingLogFile
     {
         public RollingLogFile(string filename, DateTime date, int sequenceNumber)

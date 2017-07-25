@@ -18,8 +18,7 @@ using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace Serilog.Sinks.RollingFile
-{
+namespace Serilog.Sinks.RollingFileWithPath {
     // Rolls files based on the current date, using a path
     // formatting pattern like:
     //    Logs/log-{Date}.txt

@@ -4,7 +4,7 @@ using System.IO;
 using Xunit;
 using Serilog;
 using Serilog.Events;
-using Serilog.Sinks.RollingFile;
+using Serilog.Sinks.RollingFileWithPath;
 using Serilog.Tests.Support;
 
 namespace Serilog.Sinks.RollingFile.Tests

@@ -24,8 +24,7 @@ using Serilog.Events;
 using Serilog.Formatting;
 using Serilog.Sinks.File;
 
-namespace Serilog.Sinks.RollingFile
-{
+namespace Serilog.Sinks.RollingFileWithPath {
     /// <summary>
     /// Write log events to a series of files. Each file will be named according to
     /// the date of the first log entry written to it. Only simple date-based rolling is
@@ -33,6 +32,10 @@ namespace Serilog.Sinks.RollingFile
     /// </summary>
     public sealed class RollingFileSink : ILogEventSink, IDisposable
     {
+		/// <summary>
+		///  The latest FilePath used
+		/// </summary>
+		public static string LatestFilePath = null;
         readonly TemplatedPathRoller _roller;
         readonly ITextFormatter _textFormatter;
         readonly long? _fileSizeLimitBytes;
@@ -145,7 +148,7 @@ namespace Serilog.Sinks.RollingFile
             {
                 string path;
                 _roller.GetLogFilePath(now, sequence, out path);
-
+				LatestFilePath = path;
                 try
                 {
                     _currentFile = new FileSink(path, _textFormatter, _fileSizeLimitBytes, _encoding, _buffered);

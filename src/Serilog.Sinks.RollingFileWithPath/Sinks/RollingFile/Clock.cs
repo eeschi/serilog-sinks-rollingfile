@@ -14,8 +14,7 @@
 
 using System;
 
-namespace Serilog.Sinks.RollingFile
-{
+namespace Serilog.Sinks.RollingFileWithPath {
     static class Clock
     {
         static Func<DateTime> _dateTimeNow = () => DateTime.Now;
